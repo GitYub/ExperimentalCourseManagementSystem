@@ -1,22 +1,22 @@
-package com.ncu.sysweb.entity;
+package com.ncu.sysweb.model;
 
-public class UserEntity {
+public class User {
 
     private int id;
     private String jobNum;
     private String password;
 
-    public UserEntity(int id, String jobNum, String password) {
+    public User(int id, String jobNum, String password) {
         this.id = id;
         this.jobNum = jobNum;
         this.password = password;
     }
 
-    public UserEntity() {
+    public User() {
 
     }
 
-    public UserEntity(UserEntity user) {
+    public User(User user) {
         this.id = user.id;
         this.jobNum = user.jobNum;
         this.password = user.password;
