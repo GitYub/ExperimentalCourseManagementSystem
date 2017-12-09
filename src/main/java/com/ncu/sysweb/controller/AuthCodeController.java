@@ -1,9 +1,7 @@
 package com.ncu.sysweb.controller;
 
 import com.ncu.sysweb.util.VerifyCodeUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +15,9 @@ import java.util.Random;
 @RestController
 public class AuthCodeController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/authCode")
+    @GetMapping(value = "/authCode")
     public void getVerifyCode(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        System.out.println("进入");
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
