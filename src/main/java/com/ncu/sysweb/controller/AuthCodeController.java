@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @RestController
@@ -28,6 +30,7 @@ public class AuthCodeController {
         //存入Session, 此处可以根据自己的需求
         HttpSession session = request.getSession();
         session.setAttribute("verifyCode", verifyCode);
+
         //生成图片
         int w = 100, h = 35;
         //将图片写入到 response 的输出流即可将图片返回到客户端了
