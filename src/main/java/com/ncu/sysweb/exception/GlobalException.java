@@ -2,11 +2,11 @@ package com.ncu.sysweb.exception;
 
 import com.ncu.sysweb.enums.ResultEnum;
 
-public class UserException extends RuntimeException {
+public class GlobalException extends RuntimeException {
 
     private Integer code;
 
-    public UserException(ResultEnum resultEnum) {
+    public GlobalException(ResultEnum resultEnum) {
         super(resultEnum.getMsg());
         this.code = resultEnum.getCode();
     }

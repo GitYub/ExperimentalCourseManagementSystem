@@ -1,6 +1,6 @@
 package com.ncu.sysweb.controller;
 
-import com.ncu.sysweb.exception.UserException;
+import com.ncu.sysweb.exception.GlobalException;
 import com.ncu.sysweb.model.Result;
 import com.ncu.sysweb.model.User;
 import com.ncu.sysweb.service.UserService;
@@ -15,16 +15,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "/login")
+    @GetMapping(value = "/login")
     public Result<User> login(@RequestParam(value = "jobNum", defaultValue = "") String jobNum,
-                              @RequestParam(value = "password", defaultValue = "") String password) throws UserException {
+                              @RequestParam(value = "password", defaultValue = "") String password) throws GlobalException {
 
         return ResultUtils.success(userService.login(jobNum, password));
     }
 
-    @PostMapping(value = "/modifyPwd")
+    @PutMapping(value = "/modifyPwd")
     public Result<User> modifyPassword(@RequestParam(value = "jobNum", defaultValue = "") String jobNum,
-                              @RequestParam(value = "newPwd", defaultValue = "") String newPwd) throws UserException {
+                              @RequestParam(value = "newPwd", defaultValue = "") String newPwd) throws GlobalException {
 
         userService.modifyPWD(jobNum, newPwd);
         return ResultUtils.success();

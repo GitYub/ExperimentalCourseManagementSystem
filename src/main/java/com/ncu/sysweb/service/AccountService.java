@@ -1,7 +1,9 @@
 package com.ncu.sysweb.service;
 
+import com.ncu.sysweb.exception.GlobalException;
 import com.ncu.sysweb.mapper.AccountMapper;
 import com.ncu.sysweb.model.Account;
+import com.ncu.sysweb.model.College;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,12 +40,25 @@ public class AccountService {
     }
 
     @Transactional
-    public void delete(String jobNum) {
+    public void delete(String jobNum) throws GlobalException {
         accountMapper.delete(jobNum);
     }
 
     @Transactional
-    public void updateStatus(String jobNum, int status) {
+    public void updateStatus(String jobNum, int status) throws GlobalException {
         accountMapper.updateStatus(jobNum, status == 0 ? 1 : 0);
+    }
+
+    public ArrayList<College> getCollege() {
+        return accountMapper.getCollege();
+    }
+
+    public ArrayList getDepartment(int id_college) {
+        return accountMapper.getDepartment(id_college);
+    }
+
+    @Transactional
+    public void addAccount(Account account, int role) throws GlobalException {
+
     }
 }

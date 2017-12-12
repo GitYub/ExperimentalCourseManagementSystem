@@ -1,6 +1,8 @@
 package com.ncu.sysweb.mapper;
 
 import com.ncu.sysweb.model.Account;
+import com.ncu.sysweb.model.College;
+import com.ncu.sysweb.model.Department;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Service;
 
@@ -71,4 +73,21 @@ public interface AccountMapper {
 
     @Update("update user set status = #{status} where jobnum = #{jobNum}")
     void updateStatus(@Param("jobNum") String jobNum, @Param("status") int status);
+
+    @Select("select * from college")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "name", column = "name")
+    })
+    ArrayList<College> getCollege();
+
+    @Select("select id, name from department where id_college = #{id_college}")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "name", column = "name")
+    })
+    ArrayList<Department> getDepartment(@Param("id_college") int id_college);
+
+    @Insert("insert into user (jobnum, username, password, id_college, id_department, status) values(#{jobNum}, #{userName}, #{password}, #{college}, #{department}, #{status})")
+    void addAccount(Account account);
 }
