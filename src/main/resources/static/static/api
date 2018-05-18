@@ -1,0 +1,12 @@
+/sys/application/upload   Post 上传申请的内容  参数：jobNumber， content
+/sys/application/modify   Put 更改申请的状态  参数：id， status
+/sys/application/list   Get 获取某种状态的所有申请  参数：status
+
+/sys/course/upload		Post  上传课表		参数：file
+
+/login		Post 登陆		参数：jobNumber，password
+
+/sys/user/remove	Post	删除用户		参数：jobNumber
+/sys/user/add	Post	增加用户		参数：jobNumber， username，password， college， department， role
+/sys/user/list  Get 查看		
+/sys/user/modify_password Put		改密码		参数：jobNumber，password
